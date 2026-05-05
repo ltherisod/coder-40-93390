@@ -11,7 +11,7 @@ const ItemListContainer = ({saludo, alumno})=> {
         getProducts()
         .then((res)=> setData(res))//guardo la respuesta
     },[])
-console.log(data)
+
     return( 
     <div>
        <h1>{saludo}</h1> 
