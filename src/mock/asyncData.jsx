@@ -14,7 +14,7 @@ const productos=[
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam consequatur nostrum voluptatibus delectus a, in expedita suscipit est deleniti natus. Laudantium libero temporibus accusantium ipsam. Cumque eius officia id quas.',
     price: 75000,
     stock:5,
-    category:'mas vendido',
+    category:'mas vendidos',
     img:'https://picsum.photos/200'
 },
 {
