@@ -43,7 +43,7 @@ console.log('ItemCount')
 
                 <button className="btn btn-success" onClick={sumar}>+</button>
             </div>
-            <button className="btn btn-primary buy-btn"  onClick={purchase}>Comprar</button>
+            <button className="btn btn-primary buy-btn"  onClick={purchase} disabled={count === 0 || stock === 0}>Comprar</button>
              {/* <button className="btn btn-primary buy-btn"  onClick={()=>onAdd(count)}>Comprar</button> */}
         </div>
   )

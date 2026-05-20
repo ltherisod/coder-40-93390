@@ -28,7 +28,7 @@ function NavbarRB() {
               <NavDropdown.Item as={NavLink} to='/category/mas vendidos'>Mas Vendidos</NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <CartWidgetRI/>
+        <NavLink to='/cart' style={{textDecoration:'none', color:'black'}}><CartWidgetRI/></NavLink>  
         </Navbar.Collapse>
       </Container>
     </Navbar>
