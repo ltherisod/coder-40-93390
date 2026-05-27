@@ -1,6 +1,6 @@
 const productos=[
 {
-    id:'01',
+    // id:'01', NO SUBO EL ID HARCODEADO A FIREBASE
     name:'Random 1',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam consequatur nostrum voluptatibus delectus a, in expedita suscipit est deleniti natus. Laudantium libero temporibus accusantium ipsam. Cumque eius officia id quas.',
     price: 50000,

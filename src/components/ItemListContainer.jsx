@@ -5,6 +5,8 @@ import ItemList from "./ItemList"
 import { useParams } from "react-router-dom"
 import Input from "../examples/Input"
 import LoaderComponent from "./LoaderComponent"
+import { collection, getDocs, query, where } from "firebase/firestore"
+import { db } from "../service/firebase"
 
 
 const ItemListContainer = ({saludo, alumno})=> {
@@ -13,23 +15,50 @@ const ItemListContainer = ({saludo, alumno})=> {
     const {type}= useParams()
 
 
-    useEffect(()=>{
+
+
+    //FIREBASE
+     useEffect(()=>{
         setLoader(true)
-        //pedir datos
-        getProducts()
-        .then((res)=> {
-            if(type){
-                //filtrar
-                setData(res.filter((prod)=> prod.category === type))
-            }else{
-                //todos los productos
-                setData(res)
-            }
-        })
-        .catch((error)=>console.log(error))
+        //1. CONECTARNOS CON NUESTRA COLLECTION / O CONECTAR CON QUERY
+        const prodCollection = type ? query(collection(db,"items"), where("category", "==", type)) : collection(db,"items")
+        //2.PEDIR LOS DATOS
+        getDocs(prodCollection)
+        .then((res)=>{
+            //3. LIMPIO LA INFO
+            const list = res.docs.map((doc)=>{
+                return {
+                    id:doc.id,
+                    ...doc.data()
+                }
+            })
+            //4. GUARDARLO EN UN ESTADO
+            setData(list)
+        } )
+        .catch((error)=> console.log(error))
         .finally(()=> setLoader(false))
+       
         //a la escucha del cambio de categoria
     },[type])
+
+    //PROMESA
+    // useEffect(()=>{
+    //     setLoader(true)
+    //     //pedir datos
+    //     getProducts()
+    //     .then((res)=> {
+    //         if(type){
+    //             //filtrar
+    //             setData(res.filter((prod)=> prod.category === type))
+    //         }else{
+    //             //todos los productos
+    //             setData(res)
+    //         }
+    //     })
+    //     .catch((error)=>console.log(error))
+    //     .finally(()=> setLoader(false))
+    //     //a la escucha del cambio de categoria
+    // },[type])
 
 
 console.log(type)
