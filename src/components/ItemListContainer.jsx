@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
-import { getProducts } from "../mock/asyncData"
+import { getProducts, productos } from "../mock/asyncData"
 import Item from "./Item"
 import ItemList from "./ItemList"
 import { useParams } from "react-router-dom"
 import Input from "../examples/Input"
 import LoaderComponent from "./LoaderComponent"
-import { collection, getDocs, query, where } from "firebase/firestore"
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore"
 import { db } from "../service/firebase"
 
 
@@ -60,6 +60,12 @@ const ItemListContainer = ({saludo, alumno})=> {
     //     //a la escucha del cambio de categoria
     // },[type])
 
+    //despues lo borro!!!!!!!1
+    // const subirData =()=> {
+    //     console.log('SUBIENDO DATA!!!!!!!')
+    //     const colSub = collection(db, "items")
+    //     productos.map((prod)=> addDoc(colSub, prod))
+    // }
 
 console.log(type)
     return( 
@@ -69,6 +75,8 @@ console.log(type)
         ? <LoaderComponent text={type ? 'Cargando categoría...' : 'Cargando productos...'}/>
         :<div>
        <h1>{saludo}{type && <span style={{textTransform:'capitalize'}}>{type}</span>}</h1> 
+       {/* DESPUES LO BORRO!!!!!! */}
+       {/* <button className="btn btn-danger" onClick={subirData}>SUBIR DATA</button> */}
        <ItemList data={data}/>
     </div>
     }
