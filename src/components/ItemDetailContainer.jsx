@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { getOneProduct } from '../mock/asyncData'
 import ItemDetail from './ItemDetail'
 import { useParams } from 'react-router-dom'
 import LoaderComponent from './LoaderComponent'
@@ -10,8 +9,7 @@ const ItemDetailContainer = () => {
     const[detail, setDetail]= useState({})
     const [loading, setLoading]= useState(true)
      const [invalid, setInvalid]= useState(null)
-    // const params = useParams()
-    // console.log(params, 'params')
+    
       const {id} = useParams()
 
       //FIREBASE
@@ -30,13 +28,7 @@ const ItemDetailContainer = () => {
         .catch((error)=> console.log(error))
         .finally(()=> setLoading(false))
     },[id])
-   //PROMESA
-    // useEffect(()=>{
-    //     getOneProduct(id)
-    //     .then((res)=> setDetail(res))
-    //     .catch((error)=> console.log(error))
-    //     .finally(()=> setLoading(false))
-    // },[id])
+   
 
 
     
